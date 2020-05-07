@@ -1,0 +1,110 @@
+Requirement:
+
+"Please make a Sample backend application for an e-commerce website. Please use any framework (preferably Spring Boot) and database (preferably MySQL)
+
+It should have the following operations as APIs
+
+1.    CRUD operations on items
+2.    All items listing
+3.    Single & bulk ordering (Just consider the item, no. of items & email ids as params for ordering)
+4.    All orders
+
+Please consider all the cases like out of stock etc. while making the application. You can also add more features/APIs as suitable for you.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+A simple application has been developed using Spring boot for an e-commerce website.
+
+1)  http://localhost:8080/products
+POST method to add a new product.	
+
+Sample request:
+   {
+        "id": 10005,
+        "user": "E-commerce",
+        "desc": "Apple iPhone 11 Pro (Space Grey, 512 GB)",
+        "mrp": "Rs.1,50,000",
+        "sellingPrice": "Rs.1,40,300",
+        "quantiy": "5"
+    }
+    
+    
+2) http://localhost:8080/products/{id}
+
+PUT method to update a product.
+
+Sample request:
+
+   {
+        "id": 10002,
+        "user": "E-commerce",
+        "desc": "Samsung Galaxy Note 10 ",
+        "mrp": "Rs.80,000",
+        "sellingPrice": "Rs.73,600",
+        "quantity": "10"
+    }
+    
+    
+3) http://localhost:8080/products
+
+GET operation: this retrieves all the products available
+
+Sample response:
+[
+    {
+        "id": 10001,
+        "user": "E-commerce",
+        "desc": "Apple iPhone 11 Pro (Space Grey, 512 GB)",
+        "mrp": "Rs.1,50,000",
+        "sellingPrice": "Rs.1,40,300",
+        "quantity": 20
+    },
+    {
+        "id": 10002,
+        "user": "E-commerce",
+        "desc": "Samsung Galaxy Note 10 (Aura Black, 256 GB)  (8 GB RAM)",
+        "mrp": "Rs.80,000",
+        "sellingPrice": "Rs.73,600",
+        "quantity": 5
+    },
+    {
+        "id": 10003,
+        "user": "E-commerce",
+        "desc": "Motorola Razr (Black, 128 GB)  (6 GB RAM)",
+        "mrp": "Rs.1,40,000",
+        "sellingPrice": "Rs.1,24,999",
+        "quantity": 10
+    }
+]
+
+4) http://localhost:8080/products/{id}
+
+DELETE method to delete a product by id
+
+
+5) http://localhost:8080/products/order/{id}/{email}/{quantity}
+
+Sample response objects:
+
+Success message: We retrieve a message and product details. Message contains an randomly generated tracking ID.  
+{
+    "message": "Your order has been placed successfully. Use this id: 1031484264 to track your order. Thanks for shopping with us",
+    "product": {
+        "id": 10002,
+        "user": "E-commerce",
+        "desc": "Samsung Galaxy Note 10 (Aura Black, 256 GB)  (8 GB RAM)",
+        "mrp": "Rs.80,000",
+        "sellingPrice": "Rs.73,600",
+        "quantity": 1
+    }
+}
+
+Out of stock or quantiity not available message:
+
+{
+    "message": "Selected item is Out of Stock or selected quantity is not available. Available quantity is: 5",
+    "product": null
+}
+ 
+
+    
